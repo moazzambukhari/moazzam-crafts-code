@@ -77,8 +77,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Moazzam Bukhari — Software Engineer" },
-      { name: "description", content: "Portfolio of Moazzam Bukhari, Software Engineer." },
+      { title: "Moazzam Bukhari — Software & AI Application Engineer" },
+      { name: "description", content: "Portfolio of Moazzam Bukhari, Software Engineer and AI Application Engineer." },
       { name: "author", content: "Moazzam Bukhari" },
       { property: "og:site_name", content: "Moazzam Bukhari Portfolio" },
       { property: "og:type", content: "website" },

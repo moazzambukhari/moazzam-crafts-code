@@ -7,6 +7,7 @@ import {
   Code2,
   Download,
   ExternalLink,
+  GraduationCap,
   Github,
   Layers3,
   Linkedin,
@@ -23,6 +24,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import engineeringWorkspace from "@/assets/engineering-workspace.jpg";
+import resumeAsset from "@/assets/moazzam-resume.pdf.asset.json";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,20 +42,20 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
   head: () => ({
     meta: [
-      { title: "Moazzam Bukhari | Software Engineer | React & React Native Developer" },
+      { title: "Moazzam Bukhari | Software Engineer & AI Application Engineer" },
       {
         name: "description",
         content:
-          "Moazzam Bukhari is a Software Engineer with 5+ years of experience building scalable React, React Native, full-stack, SaaS, and AI-powered applications.",
+          "Moazzam Bukhari is a Software Engineer and AI Application Engineer with 5+ years of experience building scalable web, mobile, and LLM-powered applications.",
       },
       {
         property: "og:title",
-        content: "Moazzam Bukhari | Software Engineer | React & React Native Developer",
+        content: "Moazzam Bukhari | Software Engineer & AI Application Engineer",
       },
       {
         property: "og:description",
         content:
-          "Software Engineer with 5+ years of experience building scalable web, mobile, SaaS, and AI-powered applications.",
+          "Software Engineer with 5+ years of experience in React Native, React.js, TypeScript, Python, FastAPI, and LLM application development.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -100,16 +102,16 @@ const projects: Project[] = [
     ],
   },
   {
-    name: "Pak Suzuki Brampton 311",
+    name: "City of Brampton",
     category: "Mobile",
-    description: "An end-to-end mobile application developed with React Native.",
+    description: "A cross-platform municipal mobile application developed for Android and iOS.",
     technologies: ["React Native", "REST APIs", "iOS", "Android"],
     features: [
-      "End-to-end application development",
-      "Responsive UI implementation",
-      "API integration",
-      "Android deployment",
-      "iOS deployment",
+      "Cross-platform municipal application",
+      "Custom responsive UI implementation",
+      "Real-time REST API integration",
+      "Android and iOS deployment",
+      "Performance optimization",
     ],
   },
   {
@@ -151,16 +153,17 @@ const projects: Project[] = [
     github: "https://github.com/moazzambukhari/Deguello",
   },
   {
-    name: "AI Chatbot",
+    name: "NeuraChat",
     category: "AI",
-    description: "A conversational mobile experience integrating AI and large language models.",
-    technologies: ["React Native", "Gemini API", "LLM", "Prompt Engineering"],
+    description: "A full-stack AI chat application with a React Native client and secure Python backend.",
+    technologies: ["React Native", "TypeScript", "Python", "FastAPI", "Gemini API", "PostgreSQL", "JWT"],
     features: [
-      "AI and LLM integration",
-      "Gemini API",
-      "Conversational interface",
-      "React Native implementation",
-      "AI-assisted development",
+      "Google Gemini LLM integration",
+      "Secure server-side API key architecture",
+      "System prompts and prompt engineering",
+      "Conversation context and memory design",
+      "JWT authentication and persistent chat history in development",
+      "Streaming response architecture in development",
     ],
   },
 ];
@@ -183,9 +186,9 @@ const skills = [
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & Data",
     icon: Layers3,
-    items: ["Node.js", "REST APIs", "GraphQL", "MongoDB", "MySQL", "SQL"],
+    items: ["Python", "FastAPI", "Node.js", "Express.js", "REST APIs", "GraphQL", "JWT", "RBAC", "PostgreSQL", "MongoDB", "MySQL", "SQL Server"],
   },
   {
     title: "Mobile",
@@ -204,18 +207,23 @@ const skills = [
   {
     title: "Tools",
     icon: Zap,
-    items: ["Git", "GitHub", "Azure DevOps", "Jira", "Postman", "Firebase", "CI/CD"],
+    items: ["Git", "GitHub", "Azure DevOps", "Jira", "Postman", "Firebase", "CI/CD", "Agile/Scrum", "Unit Testing", "Reactotron", "Flipper"],
   },
   {
-    title: "AI",
+    title: "AI Engineering",
     icon: Sparkles,
     items: [
-      "Generative AI",
-      "LLM APIs",
-      "Gemini API",
-      "AI Chatbots",
+      "LLM API Integration",
+      "Google Gemini API",
       "Prompt Engineering",
-      "AI-assisted development",
+      "System Prompts",
+      "Conversation Memory",
+      "Tokenization & Context Windows",
+      "AI Chatbot Development",
+      "AI Application Architecture",
+      "Machine Learning Fundamentals",
+      "Deep Learning Fundamentals",
+      "Learning RAG, LangChain & AI Agents",
     ],
   },
 ];
@@ -226,7 +234,7 @@ const services = [
   ["Full-Stack Development", "Cohesive frontend, API, and data workflows."],
   ["SaaS Development", "Production-ready products and subscription platforms."],
   ["API Integration", "Reliable REST, GraphQL, and third-party connections."],
-  ["AI & LLM Integration", "Useful conversational and generative AI experiences."],
+  ["AI & LLM Integration", "Secure conversational AI products with Python, FastAPI, and Gemini."],
   ["Dashboard Development", "Clear, responsive operational interfaces."],
   ["Performance Optimization", "Faster applications and smoother interactions."],
 ];
@@ -237,7 +245,7 @@ const reasons = [
   "Production-focused development",
   "Web + mobile expertise",
   "Strong React ecosystem knowledge",
-  "AI-assisted engineering",
+  "AI application engineering",
   "Scalable architecture",
   "Clean and maintainable code",
   "API and backend integration",
@@ -265,15 +273,15 @@ function SectionIntro({ eyebrow, title, copy }: { eyebrow: string; title: string
 function SocialLinks({ compact = false }: { compact?: boolean }) {
   const links = [
     { label: "GitHub", icon: Github, href: GITHUB_PROFILE_URL },
-    { label: "LinkedIn", icon: Linkedin, href: null },
-    { label: "Email", icon: Mail, href: null },
+    { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/moazzambukhari" },
+    { label: "Email", icon: Mail, href: "mailto:moazzambukhari52@gmail.com" },
   ];
   return (
     <div className="social-links" aria-label="Professional links">
       {links.map(({ label, icon: Icon, href }) =>
         href ? (
           <Button key={label} variant="glass" size={compact ? "icon" : "default"} asChild>
-            <a href={href} target="_blank" rel="noreferrer" aria-label={`${label} profile`} title="Opens GitHub in a new tab">
+            <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} aria-label={`${label} profile`} title={`Open ${label}`}>
               <Icon />
               {compact ? null : label}
             </a>
@@ -435,23 +443,23 @@ function Portfolio() {
       <main>
         <section id="home" className="hero container">
           <div className="hero-copy reveal is-visible">
-            <div className="availability"><span /> Software Engineer · 5+ Years Experience</div>
+            <div className="availability"><span /> Software Engineer · AI Application Engineer</div>
             <p className="hero-kicker">MOAZZAM BUKHARI</p>
-            <h1>Engineering products that perform in the real world.</h1>
-            <p className="typing-line" aria-label="Software Engineer, React.js, React Native, Full-Stack, AI">
-              <span>Software Engineer</span> · {typedText}<i aria-hidden="true" />
+            <h1>Building intelligent products for the real world.</h1>
+            <p className="typing-line" aria-label="Software Engineer, React Native and AI Application Engineer">
+              <span>Software Engineer · AI Application Engineer</span> · {typedText}<i aria-hidden="true" />
             </p>
             <p className="hero-description">
-              I’m a Software Engineer specializing in React.js, React Native, TypeScript, and full-stack
-              development. I build production-ready web and mobile applications with a strong focus on
-              scalability, performance, clean architecture, and great user experience.
+              I’m a Software Engineer with 5+ years of experience building web and mobile products with React,
+              React Native, and TypeScript. I now apply that production foundation to AI applications using
+              Python, FastAPI, LLM APIs, prompt engineering, and secure backend architecture.
             </p>
             <div className="hero-actions">
               <Button variant="premium" size="hero" asChild>
                 <a href="#projects">View My Work <ArrowRight /></a>
               </Button>
               <Button variant="glass" size="hero" asChild>
-                <a href="/assets/Moazzam-Bukhari-Resume.pdf" download>
+                <a href={resumeAsset.url} download="Syed-Moazzam-Ali-Bukhari-AI-Engineer-Resume.pdf">
                   <Download /> Download Resume
                 </a>
               </Button>
@@ -471,7 +479,7 @@ function Portfolio() {
                   width={912}
                   height={1136}
                 />
-                <div className="image-label"><Code2 /> Production systems · Web + Mobile</div>
+                <div className="image-label"><Code2 /> Production systems · Web + Mobile + AI</div>
               </div>
               <div className="profile-metrics">
                 <div><strong>5+</strong><span>Years Experience</span></div>
@@ -484,7 +492,7 @@ function Portfolio() {
             <div><strong data-count="5">0+</strong><span>Years Experience</span></div>
             <div><strong data-count="20">0+</strong><span>Projects Completed</span></div>
             <div><strong>Web & Mobile</strong><span>Cross-platform applications</span></div>
-            <div><strong>AI-Powered</strong><span>Practical LLM solutions</span></div>
+            <div><strong>AI Engineer</strong><span>LLM application development</span></div>
           </div>
         </section>
 
@@ -493,18 +501,18 @@ function Portfolio() {
           <div className="about-grid">
             <div className="about-lead reveal">
               <p>
-                Moazzam is a Software Engineer with 5+ years of experience working on production applications
-                across web and mobile platforms.
+                Moazzam is a Software Engineer and AI Application Engineer with 5+ years of experience across
+                production web, mobile, and intelligent software products.
               </p>
             </div>
             <div className="about-detail reveal">
               <p>
-                His work spans scalable architecture, reusable components, API integration, responsive UI,
-                performance optimization, real-time applications, and production deployments. He uses
-                AI-assisted development thoughtfully to accelerate delivery without compromising code quality.
+                His work combines React and React Native delivery with Python and FastAPI backends, secure LLM
+                integration, prompt engineering, conversation memory, REST APIs, authentication, and scalable
+                architecture for international clients.
               </p>
               <div className="tag-cloud">
-                {["React.js", "React Native", "Next.js", "TypeScript", "JavaScript", "Node.js", "REST APIs", "GraphQL", "MongoDB", "MySQL", "Firebase", "Git/GitHub", "CI/CD", "AI/LLM integrations"].map((item) => (
+                {["React.js", "React Native", "Next.js", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Node.js", "REST APIs", "Gemini API", "Prompt Engineering", "LLM Integration", "Git/GitHub", "CI/CD"].map((item) => (
                   <Badge key={item} variant="outline">{item}</Badge>
                 ))}
               </div>
@@ -517,7 +525,7 @@ function Portfolio() {
             <SectionIntro
               eyebrow="02 / Technical toolkit"
               title="A stack shaped by production work."
-              copy="Deep in the React ecosystem, comfortable across the product surface."
+              copy="Production web and mobile engineering, now extended into secure AI and LLM applications."
             />
             <div className="skills-grid">
               {skills.map(({ title, icon: Icon, items }) => (
@@ -539,27 +547,30 @@ function Portfolio() {
               <span>5+</span>
               <p>Years of professional experience</p>
             </div>
-            <article className="timeline-card glass reveal">
-              <div className="timeline-dot" aria-hidden="true" />
-              <p className="eyebrow">SOFTWARE ENGINEER</p>
-              <h3>Web, mobile, SaaS, and AI applications</h3>
-              <p>
-                Building production-ready experiences while collaborating across product, design, and engineering.
-              </p>
-              <ul>
-                {[
-                  "Developing production-ready React and React Native applications",
-                  "Designing reusable and scalable frontend architecture",
-                  "Integrating REST and GraphQL APIs",
-                  "Building responsive dashboards and SaaS applications",
-                  "Implementing authentication and role-based access",
-                  "Working with real-time data and notifications",
-                  "Debugging complex production issues and optimizing performance",
-                  "Supporting CI/CD, deployment, and cross-functional delivery",
-                  "Using AI tools to improve development productivity",
-                ].map((item) => <li key={item}><Check />{item}</li>)}
-              </ul>
-            </article>
+            <div className="experience-cards">
+              <article className="timeline-card glass reveal">
+                <div className="timeline-dot" aria-hidden="true" />
+                <div className="timeline-meta"><p className="eyebrow">SOFTWARE ENGINEER · KALSOFT</p><span>Mar 2024 — Present</span></div>
+                <h3>Web, mobile, and full-stack product engineering</h3>
+                <p>Delivering scalable applications for international clients in cross-functional Agile teams.</p>
+                <ul>
+                  {["Building React.js, Next.js, TypeScript, and React Native applications", "Creating reusable components with Redux Toolkit and Context API", "Integrating REST APIs and supporting Node.js and Express.js services", "Using Git, Azure DevOps, testing, and CI/CD for reliable delivery"].map((item) => <li key={item}><Check />{item}</li>)}
+                </ul>
+              </article>
+              <article className="timeline-card glass reveal">
+                <div className="timeline-dot" aria-hidden="true" />
+                <div className="timeline-meta"><p className="eyebrow">REACT NATIVE DEVELOPER · APNA WIFI</p><span>Aug 2023 — Mar 2024</span></div>
+                <h3>Cross-platform mobile application development</h3>
+                <p>Built and deployed responsive Android and iOS applications with secure, real-time workflows.</p>
+                <ul>
+                  {["Developing and deploying React Native applications", "Integrating REST APIs for real-time data", "Implementing authentication and role-based access", "Improving load times and in-app navigation performance"].map((item) => <li key={item}><Check />{item}</li>)}
+                </ul>
+              </article>
+              <article className="education-card glass reveal">
+                <GraduationCap />
+                <div><p className="eyebrow">EDUCATION · 2017 — 2020</p><h3>BS, Software Engineering</h3><p>University of Sindh, Jamshoro</p></div>
+              </article>
+            </div>
           </div>
         </section>
 
@@ -654,7 +665,7 @@ function Portfolio() {
               <p>A concise overview of technical skills, experience, and project work.</p>
             </div>
             <Button variant="premium" size="hero" asChild>
-              <a href="/assets/Moazzam-Bukhari-Resume.pdf" download><Download /> Download Resume</a>
+               <a href={resumeAsset.url} download="Syed-Moazzam-Ali-Bukhari-AI-Engineer-Resume.pdf"><Download /> Download Resume</a>
             </Button>
           </div>
         </section>
@@ -669,31 +680,27 @@ function Portfolio() {
             <SocialLinks />
           </div>
           <div className="contact-cards reveal">
-            <div className="contact-card glass">
+             <a className="contact-card glass" href="mailto:moazzambukhari52@gmail.com">
               <div className="contact-card-icon"><Mail /></div>
               <div className="contact-card-body">
                 <h3>Email</h3>
-                <p className="contact-value is-pending" title="Email address not provided yet">
-                  Available on request
-                </p>
+                 <p className="contact-value">moazzambukhari52@gmail.com</p>
               </div>
-            </div>
-            <div className="contact-card glass">
+             </a>
+             <a className="contact-card glass" href="tel:+923032724135">
               <div className="contact-card-icon"><Phone /></div>
               <div className="contact-card-body">
                 <h3>Phone</h3>
-                <p className="contact-value is-pending" title="Phone number not provided yet">
-                  Available on request
-                </p>
+                <p className="contact-value">+92 303 2724135</p>
               </div>
-            </div>
-            <a className="contact-card glass" href={GITHUB_PROFILE_URL} target="_blank" rel="noreferrer">
+             </a>
+             <a className="contact-card glass" href={GITHUB_PROFILE_URL} target="_blank" rel="noreferrer">
               <div className="contact-card-icon"><Github /></div>
               <div className="contact-card-body">
                 <h3>GitHub</h3>
                 <p className="contact-value">github.com/moazzambukhari</p>
               </div>
-            </a>
+             </a>
           </div>
         </section>
       </main>
@@ -701,8 +708,8 @@ function Portfolio() {
       <footer>
         <div className="container footer-inner">
           <a className="brand" href="#home">Moazzam<span>.</span></a>
-          <p>© 2026 Moazzam Bukhari · Software Engineer</p>
-          <p>React · React Native · Full-Stack · AI</p>
+           <p>© 2026 Moazzam Bukhari · Software & AI Application Engineer</p>
+           <p>React · React Native · Python · FastAPI · LLMs</p>
         </div>
       </footer>
 

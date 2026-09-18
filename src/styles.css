@@ -169,16 +169,23 @@ h1 { margin: 0; max-width: 11ch; font-size: clamp(3.15rem, 6.4vw, 6.2rem); line-
 .skill-list span, .project-tags span { padding: .35rem .55rem; border: 1px solid var(--border); border-radius: .4rem; color: var(--muted-foreground); font-size: .7rem; }
 
 .experience-layout { display: grid; grid-template-columns: .5fr 1.5fr; gap: 4rem; align-items: start; }
+.experience-cards { display: grid; gap: 1rem; }
 .experience-marker { position: sticky; top: 7rem; }
 .experience-marker span { color: var(--primary); font: 700 clamp(5rem, 12vw, 9rem)/.85 var(--font-heading); }
 .experience-marker p { max-width: 14ch; color: var(--muted-foreground); }
 .timeline-card { position: relative; border-radius: 1rem; padding: 2rem; }
+.timeline-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.timeline-meta span { color: var(--muted-foreground); font-size: .72rem; white-space: nowrap; }
 .timeline-dot { position: absolute; left: -.45rem; top: 2rem; width: .8rem; height: .8rem; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 .4rem color-mix(in oklab, var(--primary) 12%, transparent); }
 .timeline-card h3 { margin: .2rem 0 1rem; font-size: 1.7rem; }
 .timeline-card > p:not(.eyebrow) { color: var(--muted-foreground); }
 .timeline-card ul, .dialog-features ul { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: .9rem 1.5rem; }
 .timeline-card li, .dialog-features li { display: flex; gap: .6rem; color: var(--muted-foreground); font-size: .84rem; line-height: 1.5; }
 .timeline-card li svg, .dialog-features li svg, .reason-grid svg { width: 1rem; height: 1rem; flex: 0 0 auto; color: var(--primary); margin-top: .15rem; }
+.education-card { display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; border-radius: 1rem; }
+.education-card > svg { width: 1.5rem; color: var(--primary); flex: 0 0 auto; }
+.education-card h3 { margin: 0; font-size: 1.15rem; }
+.education-card p:last-child { margin: .25rem 0 0; color: var(--muted-foreground); font-size: .84rem; }
 
 .filter-row { display: flex; gap: .5rem; margin: -1rem 0 1.4rem; }
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -263,6 +270,7 @@ footer { border-top: 1px solid var(--border); }
   .skills-grid, .projects-grid { grid-template-columns: 1fr; }
   .skill-card, .skill-card:nth-child(4), .skill-card:nth-child(5) { grid-column: auto; }
   .timeline-card { padding: 1.3rem; }
+  .timeline-meta { align-items: flex-start; flex-direction: column; gap: .2rem; }
   .timeline-card ul { grid-template-columns: 1fr; }
   .project-card { min-height: 370px; }
   .reason-grid { grid-template-columns: 1fr; }
