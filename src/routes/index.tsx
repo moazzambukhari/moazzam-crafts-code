@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUp,
-  BriefcaseBusiness,
   Check,
   ChevronRight,
   Code2,
@@ -14,14 +13,14 @@ import {
   Mail,
   Menu,
   Moon,
-  Send,
+  Phone,
   Smartphone,
   Sparkles,
   Sun,
   X,
   Zap,
 } from "lucide-react";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import engineeringWorkspace from "@/assets/engineering-workspace.jpg";
 import { Badge } from "@/components/ui/badge";
@@ -33,8 +32,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+
+const GITHUB_PROFILE_URL = "https://github.com/moazzambukhari";
+const GITHUB_REPOS_URL = "https://github.com/moazzambukhari?tab=repositories";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -264,7 +264,7 @@ function SectionIntro({ eyebrow, title, copy }: { eyebrow: string; title: string
 
 function SocialLinks({ compact = false }: { compact?: boolean }) {
   const links = [
-    { label: "GitHub", icon: Github, href: "https://github.com/moazzambukhari" as const },
+    { label: "GitHub", icon: Github, href: GITHUB_PROFILE_URL },
     { label: "LinkedIn", icon: Linkedin, href: null },
     { label: "Email", icon: Mail, href: null },
   ];
@@ -305,7 +305,6 @@ function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showTop, setShowTop] = useState(false);
   const [typedText, setTypedText] = useState("");
-  const [formStatus, setFormStatus] = useState("");
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -381,16 +380,6 @@ function Portfolio() {
 
   const visibleProjects = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
-  const submitForm = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (!form.checkValidity()) {
-      setFormStatus("Please complete all fields with a valid email address.");
-      form.reportValidity();
-      return;
-    }
-    setFormStatus("Thanks — your message is ready. Add Moazzam’s email to enable delivery.");
-  };
 
   return (
     <div className="site-shell">
@@ -613,13 +602,17 @@ function Portfolio() {
                     <Button variant="premium" size="sm" onClick={() => setSelectedProject(project)}>
                       View details <ArrowRight />
                     </Button>
-                    {project.github ? (
-                      <Button variant="glass" size="icon" asChild>
-                        <a href={project.github} target="_blank" rel="noreferrer" title="View on GitHub" aria-label={`${project.name} on GitHub`}><Github /></a>
-                      </Button>
-                    ) : (
-                      <Button variant="glass" size="icon" disabled title="GitHub URL not provided" aria-label="GitHub URL not provided"><Github /></Button>
-                    )}
+                    <Button variant="glass" size="icon" asChild>
+                      <a
+                        href={project.github ?? GITHUB_REPOS_URL}
+                        target="_blank"
+                        rel="noreferrer"
+                        title={project.github ? "View on GitHub" : "Browse all repositories on GitHub"}
+                        aria-label={`${project.name} on GitHub`}
+                      >
+                        <Github />
+                      </a>
+                    </Button>
                     <Button variant="glass" size="icon" disabled title="Live demo URL not provided" aria-label="Live demo URL not provided"><ExternalLink /></Button>
                   </div>
                 </article>
@@ -671,20 +664,37 @@ function Portfolio() {
             <p className="eyebrow">08 / Contact</p>
             <h2>Let’s Build Something Great</h2>
             <p>
-              Have a project, opportunity, or idea? Let’s discuss how I can help turn it into a production-ready solution.
+              Have a project, opportunity, or idea? Reach out directly — I reply quickly.
             </p>
             <SocialLinks />
           </div>
-          <form className="contact-form glass reveal" onSubmit={submitForm} noValidate>
-            <label htmlFor="name">Name</label>
-            <Input id="name" name="name" placeholder="Your name" minLength={2} required />
-            <label htmlFor="email">Email</label>
-            <Input id="email" name="email" type="email" placeholder="you@company.com" required />
-            <label htmlFor="message">Message</label>
-            <Textarea id="message" name="message" placeholder="Tell me about your project…" minLength={10} rows={5} required />
-            <Button variant="premium" size="hero" type="submit"><Send /> Send Message</Button>
-            <p className="form-status" role="status">{formStatus}</p>
-          </form>
+          <div className="contact-cards reveal">
+            <div className="contact-card glass">
+              <div className="contact-card-icon"><Mail /></div>
+              <div className="contact-card-body">
+                <h3>Email</h3>
+                <p className="contact-value is-pending" title="Email address not provided yet">
+                  Available on request
+                </p>
+              </div>
+            </div>
+            <div className="contact-card glass">
+              <div className="contact-card-icon"><Phone /></div>
+              <div className="contact-card-body">
+                <h3>Phone</h3>
+                <p className="contact-value is-pending" title="Phone number not provided yet">
+                  Available on request
+                </p>
+              </div>
+            </div>
+            <a className="contact-card glass" href={GITHUB_PROFILE_URL} target="_blank" rel="noreferrer">
+              <div className="contact-card-icon"><Github /></div>
+              <div className="contact-card-body">
+                <h3>GitHub</h3>
+                <p className="contact-value">github.com/moazzambukhari</p>
+              </div>
+            </a>
+          </div>
         </section>
       </main>
 
@@ -723,13 +733,15 @@ function Portfolio() {
                 <ul>{selectedProject.features.map((feature) => <li key={feature}><Check />{feature}</li>)}</ul>
               </div>
               <div className="dialog-actions">
-                {selectedProject.github ? (
-                  <Button variant="glass" asChild>
-                    <a href={selectedProject.github} target="_blank" rel="noreferrer"><Github /> View on GitHub</a>
-                  </Button>
-                ) : (
-                  <Button variant="glass" disabled><Github /> GitHub unavailable</Button>
-                )}
+                <Button variant="glass" asChild>
+                  <a
+                    href={selectedProject.github ?? GITHUB_REPOS_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Github /> {selectedProject.github ? "View on GitHub" : "Browse GitHub repositories"}
+                  </a>
+                </Button>
                 <Button variant="glass" disabled><ExternalLink /> Live demo unavailable</Button>
               </div>
             </>

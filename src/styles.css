@@ -207,11 +207,13 @@ h1 { margin: 0; max-width: 11ch; font-size: clamp(3.15rem, 6.4vw, 6.2rem); line-
 .resume-panel p:not(.eyebrow) { color: var(--muted-foreground); }
 .contact-section { display: grid; grid-template-columns: .9fr 1.1fr; gap: 5rem; }
 .contact-copy > p:not(.eyebrow) { max-width: 45ch; color: var(--muted-foreground); line-height: 1.75; }
-.contact-form { padding: 1.5rem; border-radius: 1rem; display: grid; gap: .65rem; }
-.contact-form label { margin-top: .3rem; color: var(--muted-foreground); font-size: .72rem; }
-.contact-form input, .contact-form textarea { background: color-mix(in oklab, var(--background) 60%, transparent); }
-.contact-form button { margin-top: .5rem; }
-.form-status { min-height: 1.2rem; margin: 0; color: var(--muted-foreground); font-size: .75rem; }
+.contact-cards { display: grid; gap: 1rem; align-content: start; }
+.contact-card { display: flex; align-items: center; gap: 1rem; padding: 1.15rem 1.3rem; border-radius: 1rem; text-decoration: none; color: inherit; transition: transform .25s ease, border-color .25s ease; }
+a.contact-card:hover { transform: translateY(-2px); border-color: color-mix(in oklab, var(--primary) 55%, var(--border)); }
+.contact-card-icon { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: .8rem; background: color-mix(in oklab, var(--primary) 14%, transparent); color: var(--primary); flex-shrink: 0; }
+.contact-card-body h3 { margin: 0; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-foreground); font-weight: 600; }
+.contact-value { margin: .2rem 0 0; font-size: .95rem; font-weight: 500; overflow-wrap: anywhere; }
+.contact-value.is-pending { color: var(--muted-foreground); font-weight: 400; font-style: italic; }
 footer { border-top: 1px solid var(--border); }
 .footer-inner { min-height: 7rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .footer-inner p { color: var(--muted-foreground); font-size: .72rem; }
