@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUp,
-  BriefcaseBusiness,
   Check,
   ChevronRight,
   Code2,
@@ -14,14 +13,14 @@ import {
   Mail,
   Menu,
   Moon,
-  Send,
+  Phone,
   Smartphone,
   Sparkles,
   Sun,
   X,
   Zap,
 } from "lucide-react";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import engineeringWorkspace from "@/assets/engineering-workspace.jpg";
 import { Badge } from "@/components/ui/badge";
@@ -33,8 +32,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
