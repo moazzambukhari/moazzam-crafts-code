@@ -547,27 +547,30 @@ function Portfolio() {
               <span>5+</span>
               <p>Years of professional experience</p>
             </div>
-            <article className="timeline-card glass reveal">
-              <div className="timeline-dot" aria-hidden="true" />
-              <p className="eyebrow">SOFTWARE ENGINEER</p>
-              <h3>Web, mobile, SaaS, and AI applications</h3>
-              <p>
-                Building production-ready experiences while collaborating across product, design, and engineering.
-              </p>
-              <ul>
-                {[
-                  "Developing production-ready React and React Native applications",
-                  "Designing reusable and scalable frontend architecture",
-                  "Integrating REST and GraphQL APIs",
-                  "Building responsive dashboards and SaaS applications",
-                  "Implementing authentication and role-based access",
-                  "Working with real-time data and notifications",
-                  "Debugging complex production issues and optimizing performance",
-                  "Supporting CI/CD, deployment, and cross-functional delivery",
-                  "Using AI tools to improve development productivity",
-                ].map((item) => <li key={item}><Check />{item}</li>)}
-              </ul>
-            </article>
+            <div className="experience-cards">
+              <article className="timeline-card glass reveal">
+                <div className="timeline-dot" aria-hidden="true" />
+                <div className="timeline-meta"><p className="eyebrow">SOFTWARE ENGINEER · KALSOFT</p><span>Mar 2024 — Present</span></div>
+                <h3>Web, mobile, and full-stack product engineering</h3>
+                <p>Delivering scalable applications for international clients in cross-functional Agile teams.</p>
+                <ul>
+                  {["Building React.js, Next.js, TypeScript, and React Native applications", "Creating reusable components with Redux Toolkit and Context API", "Integrating REST APIs and supporting Node.js and Express.js services", "Using Git, Azure DevOps, testing, and CI/CD for reliable delivery"].map((item) => <li key={item}><Check />{item}</li>)}
+                </ul>
+              </article>
+              <article className="timeline-card glass reveal">
+                <div className="timeline-dot" aria-hidden="true" />
+                <div className="timeline-meta"><p className="eyebrow">REACT NATIVE DEVELOPER · APNA WIFI</p><span>Aug 2023 — Mar 2024</span></div>
+                <h3>Cross-platform mobile application development</h3>
+                <p>Built and deployed responsive Android and iOS applications with secure, real-time workflows.</p>
+                <ul>
+                  {["Developing and deploying React Native applications", "Integrating REST APIs for real-time data", "Implementing authentication and role-based access", "Improving load times and in-app navigation performance"].map((item) => <li key={item}><Check />{item}</li>)}
+                </ul>
+              </article>
+              <article className="education-card glass reveal">
+                <GraduationCap />
+                <div><p className="eyebrow">EDUCATION · 2017 — 2020</p><h3>BS, Software Engineering</h3><p>University of Sindh, Jamshoro</p></div>
+              </article>
+            </div>
           </div>
         </section>
 
@@ -662,7 +665,7 @@ function Portfolio() {
               <p>A concise overview of technical skills, experience, and project work.</p>
             </div>
             <Button variant="premium" size="hero" asChild>
-              <a href="/assets/Moazzam-Bukhari-Resume.pdf" download><Download /> Download Resume</a>
+               <a href={resumeAsset.url} download="Syed-Moazzam-Ali-Bukhari-AI-Engineer-Resume.pdf"><Download /> Download Resume</a>
             </Button>
           </div>
         </section>
@@ -677,23 +680,19 @@ function Portfolio() {
             <SocialLinks />
           </div>
           <div className="contact-cards reveal">
-            <div className="contact-card glass">
+             <a className="contact-card glass" href="mailto:moazzambukhari52@gmail.com">
               <div className="contact-card-icon"><Mail /></div>
               <div className="contact-card-body">
                 <h3>Email</h3>
-                <p className="contact-value is-pending" title="Email address not provided yet">
-                  Available on request
-                </p>
+                 <p className="contact-value">moazzambukhari52@gmail.com</p>
               </div>
-            </div>
-            <div className="contact-card glass">
+             </a>
+             <a className="contact-card glass" href="tel:+923032724135">
               <div className="contact-card-icon"><Phone /></div>
               <div className="contact-card-body">
                 <h3>Phone</h3>
-                <p className="contact-value is-pending" title="Phone number not provided yet">
-                  Available on request
-                </p>
-              </div>
+                 <p className="contact-value">+92 303 2724135</p>
+             </a>
             </div>
             <a className="contact-card glass" href={GITHUB_PROFILE_URL} target="_blank" rel="noreferrer">
               <div className="contact-card-icon"><Github /></div>
@@ -709,8 +708,8 @@ function Portfolio() {
       <footer>
         <div className="container footer-inner">
           <a className="brand" href="#home">Moazzam<span>.</span></a>
-          <p>© 2026 Moazzam Bukhari · Software Engineer</p>
-          <p>React · React Native · Full-Stack · AI</p>
+           <p>© 2026 Moazzam Bukhari · Software & AI Application Engineer</p>
+           <p>React · React Native · Python · FastAPI · LLMs</p>
         </div>
       </footer>
 
