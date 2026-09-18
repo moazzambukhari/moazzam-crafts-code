@@ -443,23 +443,23 @@ function Portfolio() {
       <main>
         <section id="home" className="hero container">
           <div className="hero-copy reveal is-visible">
-            <div className="availability"><span /> Software Engineer · 5+ Years Experience</div>
+            <div className="availability"><span /> Software Engineer · AI Application Engineer</div>
             <p className="hero-kicker">MOAZZAM BUKHARI</p>
-            <h1>Engineering products that perform in the real world.</h1>
-            <p className="typing-line" aria-label="Software Engineer, React.js, React Native, Full-Stack, AI">
-              <span>Software Engineer</span> · {typedText}<i aria-hidden="true" />
+            <h1>Building intelligent products for the real world.</h1>
+            <p className="typing-line" aria-label="Software Engineer, React Native and AI Application Engineer">
+              <span>Software Engineer · AI Application Engineer</span> · {typedText}<i aria-hidden="true" />
             </p>
             <p className="hero-description">
-              I’m a Software Engineer specializing in React.js, React Native, TypeScript, and full-stack
-              development. I build production-ready web and mobile applications with a strong focus on
-              scalability, performance, clean architecture, and great user experience.
+              I’m a Software Engineer with 5+ years of experience building web and mobile products with React,
+              React Native, and TypeScript. I now apply that production foundation to AI applications using
+              Python, FastAPI, LLM APIs, prompt engineering, and secure backend architecture.
             </p>
             <div className="hero-actions">
               <Button variant="premium" size="hero" asChild>
                 <a href="#projects">View My Work <ArrowRight /></a>
               </Button>
               <Button variant="glass" size="hero" asChild>
-                <a href="/assets/Moazzam-Bukhari-Resume.pdf" download>
+                <a href={resumeAsset.url} download="Syed-Moazzam-Ali-Bukhari-AI-Engineer-Resume.pdf">
                   <Download /> Download Resume
                 </a>
               </Button>
@@ -479,7 +479,7 @@ function Portfolio() {
                   width={912}
                   height={1136}
                 />
-                <div className="image-label"><Code2 /> Production systems · Web + Mobile</div>
+                <div className="image-label"><Code2 /> Production systems · Web + Mobile + AI</div>
               </div>
               <div className="profile-metrics">
                 <div><strong>5+</strong><span>Years Experience</span></div>
@@ -492,7 +492,7 @@ function Portfolio() {
             <div><strong data-count="5">0+</strong><span>Years Experience</span></div>
             <div><strong data-count="20">0+</strong><span>Projects Completed</span></div>
             <div><strong>Web & Mobile</strong><span>Cross-platform applications</span></div>
-            <div><strong>AI-Powered</strong><span>Practical LLM solutions</span></div>
+            <div><strong>AI Engineer</strong><span>LLM application development</span></div>
           </div>
         </section>
 
@@ -501,18 +501,18 @@ function Portfolio() {
           <div className="about-grid">
             <div className="about-lead reveal">
               <p>
-                Moazzam is a Software Engineer with 5+ years of experience working on production applications
-                across web and mobile platforms.
+                Moazzam is a Software Engineer and AI Application Engineer with 5+ years of experience across
+                production web, mobile, and intelligent software products.
               </p>
             </div>
             <div className="about-detail reveal">
               <p>
-                His work spans scalable architecture, reusable components, API integration, responsive UI,
-                performance optimization, real-time applications, and production deployments. He uses
-                AI-assisted development thoughtfully to accelerate delivery without compromising code quality.
+                His work combines React and React Native delivery with Python and FastAPI backends, secure LLM
+                integration, prompt engineering, conversation memory, REST APIs, authentication, and scalable
+                architecture for international clients.
               </p>
               <div className="tag-cloud">
-                {["React.js", "React Native", "Next.js", "TypeScript", "JavaScript", "Node.js", "REST APIs", "GraphQL", "MongoDB", "MySQL", "Firebase", "Git/GitHub", "CI/CD", "AI/LLM integrations"].map((item) => (
+                {["React.js", "React Native", "Next.js", "TypeScript", "Python", "FastAPI", "PostgreSQL", "Node.js", "REST APIs", "Gemini API", "Prompt Engineering", "LLM Integration", "Git/GitHub", "CI/CD"].map((item) => (
                   <Badge key={item} variant="outline">{item}</Badge>
                 ))}
               </div>
@@ -525,7 +525,7 @@ function Portfolio() {
             <SectionIntro
               eyebrow="02 / Technical toolkit"
               title="A stack shaped by production work."
-              copy="Deep in the React ecosystem, comfortable across the product surface."
+              copy="Production web and mobile engineering, now extended into secure AI and LLM applications."
             />
             <div className="skills-grid">
               {skills.map(({ title, icon: Icon, items }) => (
