@@ -102,16 +102,16 @@ const projects: Project[] = [
     ],
   },
   {
-    name: "Pak Suzuki Brampton 311",
+    name: "City of Brampton",
     category: "Mobile",
-    description: "An end-to-end mobile application developed with React Native.",
+    description: "A cross-platform municipal mobile application developed for Android and iOS.",
     technologies: ["React Native", "REST APIs", "iOS", "Android"],
     features: [
-      "End-to-end application development",
-      "Responsive UI implementation",
-      "API integration",
-      "Android deployment",
-      "iOS deployment",
+      "Cross-platform municipal application",
+      "Custom responsive UI implementation",
+      "Real-time REST API integration",
+      "Android and iOS deployment",
+      "Performance optimization",
     ],
   },
   {
@@ -281,7 +281,7 @@ function SocialLinks({ compact = false }: { compact?: boolean }) {
       {links.map(({ label, icon: Icon, href }) =>
         href ? (
           <Button key={label} variant="glass" size={compact ? "icon" : "default"} asChild>
-            <a href={href} target="_blank" rel="noreferrer" aria-label={`${label} profile`} title="Opens GitHub in a new tab">
+            <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} aria-label={`${label} profile`} title={`Open ${label}`}>
               <Icon />
               {compact ? null : label}
             </a>
