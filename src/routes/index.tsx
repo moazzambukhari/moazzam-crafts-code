@@ -691,16 +691,16 @@ function Portfolio() {
               <div className="contact-card-icon"><Phone /></div>
               <div className="contact-card-body">
                 <h3>Phone</h3>
-                 <p className="contact-value">+92 303 2724135</p>
+                <p className="contact-value">+92 303 2724135</p>
+              </div>
              </a>
-            </div>
-            <a className="contact-card glass" href={GITHUB_PROFILE_URL} target="_blank" rel="noreferrer">
+             <a className="contact-card glass" href={GITHUB_PROFILE_URL} target="_blank" rel="noreferrer">
               <div className="contact-card-icon"><Github /></div>
               <div className="contact-card-body">
                 <h3>GitHub</h3>
                 <p className="contact-value">github.com/moazzambukhari</p>
               </div>
-            </a>
+             </a>
           </div>
         </section>
       </main>
