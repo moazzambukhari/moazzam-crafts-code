@@ -33,6 +33,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+const GITHUB_PROFILE_URL = "https://github.com/moazzambukhari";
+const GITHUB_REPOS_URL = "https://github.com/moazzambukhari?tab=repositories";
+
 export const Route = createFileRoute("/")({
   component: Portfolio,
   head: () => ({
@@ -261,7 +264,7 @@ function SectionIntro({ eyebrow, title, copy }: { eyebrow: string; title: string
 
 function SocialLinks({ compact = false }: { compact?: boolean }) {
   const links = [
-    { label: "GitHub", icon: Github, href: "https://github.com/moazzambukhari" as const },
+    { label: "GitHub", icon: Github, href: GITHUB_PROFILE_URL as const },
     { label: "LinkedIn", icon: Linkedin, href: null },
     { label: "Email", icon: Mail, href: null },
   ];
@@ -730,13 +733,15 @@ function Portfolio() {
                 <ul>{selectedProject.features.map((feature) => <li key={feature}><Check />{feature}</li>)}</ul>
               </div>
               <div className="dialog-actions">
-                {selectedProject.github ? (
-                  <Button variant="glass" asChild>
-                    <a href={selectedProject.github} target="_blank" rel="noreferrer"><Github /> View on GitHub</a>
-                  </Button>
-                ) : (
-                  <Button variant="glass" disabled><Github /> GitHub unavailable</Button>
-                )}
+                <Button variant="glass" asChild>
+                  <a
+                    href={selectedProject.github ?? GITHUB_REPOS_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Github /> {selectedProject.github ? "View on GitHub" : "Browse GitHub repositories"}
+                  </a>
+                </Button>
                 <Button variant="glass" disabled><ExternalLink /> Live demo unavailable</Button>
               </div>
             </>
