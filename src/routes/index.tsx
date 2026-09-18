@@ -264,7 +264,7 @@ function SectionIntro({ eyebrow, title, copy }: { eyebrow: string; title: string
 
 function SocialLinks({ compact = false }: { compact?: boolean }) {
   const links = [
-    { label: "GitHub", icon: Github, href: GITHUB_PROFILE_URL as const },
+    { label: "GitHub", icon: Github, href: GITHUB_PROFILE_URL },
     { label: "LinkedIn", icon: Linkedin, href: null },
     { label: "Email", icon: Mail, href: null },
   ];
