@@ -7,6 +7,7 @@ import {
   Code2,
   Download,
   ExternalLink,
+  GraduationCap,
   Github,
   Layers3,
   Linkedin,
@@ -23,6 +24,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 import engineeringWorkspace from "@/assets/engineering-workspace.jpg";
+import resumeAsset from "@/assets/moazzam-resume.pdf.asset.json";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,20 +42,20 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
   head: () => ({
     meta: [
-      { title: "Moazzam Bukhari | Software Engineer | React & React Native Developer" },
+      { title: "Moazzam Bukhari | Software Engineer & AI Application Engineer" },
       {
         name: "description",
         content:
-          "Moazzam Bukhari is a Software Engineer with 5+ years of experience building scalable React, React Native, full-stack, SaaS, and AI-powered applications.",
+          "Moazzam Bukhari is a Software Engineer and AI Application Engineer with 5+ years of experience building scalable web, mobile, and LLM-powered applications.",
       },
       {
         property: "og:title",
-        content: "Moazzam Bukhari | Software Engineer | React & React Native Developer",
+        content: "Moazzam Bukhari | Software Engineer & AI Application Engineer",
       },
       {
         property: "og:description",
         content:
-          "Software Engineer with 5+ years of experience building scalable web, mobile, SaaS, and AI-powered applications.",
+          "Software Engineer with 5+ years of experience in React Native, React.js, TypeScript, Python, FastAPI, and LLM application development.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
@@ -151,16 +153,17 @@ const projects: Project[] = [
     github: "https://github.com/moazzambukhari/Deguello",
   },
   {
-    name: "AI Chatbot",
+    name: "NeuraChat",
     category: "AI",
-    description: "A conversational mobile experience integrating AI and large language models.",
-    technologies: ["React Native", "Gemini API", "LLM", "Prompt Engineering"],
+    description: "A full-stack AI chat application with a React Native client and secure Python backend.",
+    technologies: ["React Native", "TypeScript", "Python", "FastAPI", "Gemini API", "PostgreSQL", "JWT"],
     features: [
-      "AI and LLM integration",
-      "Gemini API",
-      "Conversational interface",
-      "React Native implementation",
-      "AI-assisted development",
+      "Google Gemini LLM integration",
+      "Secure server-side API key architecture",
+      "System prompts and prompt engineering",
+      "Conversation context and memory design",
+      "JWT authentication and persistent chat history in development",
+      "Streaming response architecture in development",
     ],
   },
 ];
@@ -183,9 +186,9 @@ const skills = [
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & Data",
     icon: Layers3,
-    items: ["Node.js", "REST APIs", "GraphQL", "MongoDB", "MySQL", "SQL"],
+    items: ["Python", "FastAPI", "Node.js", "Express.js", "REST APIs", "GraphQL", "JWT", "RBAC", "PostgreSQL", "MongoDB", "MySQL", "SQL Server"],
   },
   {
     title: "Mobile",
@@ -204,18 +207,23 @@ const skills = [
   {
     title: "Tools",
     icon: Zap,
-    items: ["Git", "GitHub", "Azure DevOps", "Jira", "Postman", "Firebase", "CI/CD"],
+    items: ["Git", "GitHub", "Azure DevOps", "Jira", "Postman", "Firebase", "CI/CD", "Agile/Scrum", "Unit Testing", "Reactotron", "Flipper"],
   },
   {
-    title: "AI",
+    title: "AI Engineering",
     icon: Sparkles,
     items: [
-      "Generative AI",
-      "LLM APIs",
-      "Gemini API",
-      "AI Chatbots",
+      "LLM API Integration",
+      "Google Gemini API",
       "Prompt Engineering",
-      "AI-assisted development",
+      "System Prompts",
+      "Conversation Memory",
+      "Tokenization & Context Windows",
+      "AI Chatbot Development",
+      "AI Application Architecture",
+      "Machine Learning Fundamentals",
+      "Deep Learning Fundamentals",
+      "Learning RAG, LangChain & AI Agents",
     ],
   },
 ];
@@ -226,7 +234,7 @@ const services = [
   ["Full-Stack Development", "Cohesive frontend, API, and data workflows."],
   ["SaaS Development", "Production-ready products and subscription platforms."],
   ["API Integration", "Reliable REST, GraphQL, and third-party connections."],
-  ["AI & LLM Integration", "Useful conversational and generative AI experiences."],
+  ["AI & LLM Integration", "Secure conversational AI products with Python, FastAPI, and Gemini."],
   ["Dashboard Development", "Clear, responsive operational interfaces."],
   ["Performance Optimization", "Faster applications and smoother interactions."],
 ];
@@ -237,7 +245,7 @@ const reasons = [
   "Production-focused development",
   "Web + mobile expertise",
   "Strong React ecosystem knowledge",
-  "AI-assisted engineering",
+  "AI application engineering",
   "Scalable architecture",
   "Clean and maintainable code",
   "API and backend integration",
@@ -265,8 +273,8 @@ function SectionIntro({ eyebrow, title, copy }: { eyebrow: string; title: string
 function SocialLinks({ compact = false }: { compact?: boolean }) {
   const links = [
     { label: "GitHub", icon: Github, href: GITHUB_PROFILE_URL },
-    { label: "LinkedIn", icon: Linkedin, href: null },
-    { label: "Email", icon: Mail, href: null },
+    { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/in/moazzambukhari" },
+    { label: "Email", icon: Mail, href: "mailto:moazzambukhari52@gmail.com" },
   ];
   return (
     <div className="social-links" aria-label="Professional links">
