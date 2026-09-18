@@ -351,7 +351,7 @@ function Portfolio() {
       ([entry]) => {
         if (!entry?.isIntersecting) return;
         counters.forEach((counter) => {
-          const target = Number(counter.dataset.count ?? "0");
+          const target = Number(counter.dataset["count"] ?? "0");
           let value = 0;
           const tick = () => {
             value = Math.min(target, value + 1);
