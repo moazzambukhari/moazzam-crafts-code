@@ -302,7 +302,6 @@ function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showTop, setShowTop] = useState(false);
   const [typedText, setTypedText] = useState("");
-  const [formStatus, setFormStatus] = useState("");
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -378,16 +377,6 @@ function Portfolio() {
 
   const visibleProjects = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
-  const submitForm = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    if (!form.checkValidity()) {
-      setFormStatus("Please complete all fields with a valid email address.");
-      form.reportValidity();
-      return;
-    }
-    setFormStatus("Thanks — your message is ready. Add Moazzam’s email to enable delivery.");
-  };
 
   return (
     <div className="site-shell">
