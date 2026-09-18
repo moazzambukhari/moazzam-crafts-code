@@ -69,6 +69,7 @@ type Project = {
   description: string;
   technologies: string[];
   features: string[];
+  github?: string;
 };
 
 const projects: Project[] = [
@@ -147,6 +148,7 @@ const projects: Project[] = [
       "Purpose-built game UI",
       "Player interactions",
     ],
+    github: "https://github.com/moazzambukhari/Deguello",
   },
   {
     name: "AI Chatbot",
@@ -262,26 +264,35 @@ function SectionIntro({ eyebrow, title, copy }: { eyebrow: string; title: string
 
 function SocialLinks({ compact = false }: { compact?: boolean }) {
   const links = [
-    { label: "GitHub", icon: Github },
-    { label: "LinkedIn", icon: Linkedin },
-    { label: "Email", icon: Mail },
+    { label: "GitHub", icon: Github, href: "https://github.com/moazzambukhari" as const },
+    { label: "LinkedIn", icon: Linkedin, href: null },
+    { label: "Email", icon: Mail, href: null },
   ];
   return (
     <div className="social-links" aria-label="Professional links">
-      {links.map(({ label, icon: Icon }) => (
-        <Button
-          key={label}
-          type="button"
-          variant="glass"
-          size={compact ? "icon" : "default"}
-          aria-label={`${label} link unavailable`}
-          title={`${label} URL not provided`}
-          disabled
-        >
-          <Icon />
-          {compact ? null : label}
-        </Button>
-      ))}
+      {links.map(({ label, icon: Icon, href }) =>
+        href ? (
+          <Button key={label} variant="glass" size={compact ? "icon" : "default"} asChild>
+            <a href={href} target="_blank" rel="noreferrer" aria-label={`${label} profile`} title="Opens GitHub in a new tab">
+              <Icon />
+              {compact ? null : label}
+            </a>
+          </Button>
+        ) : (
+          <Button
+            key={label}
+            type="button"
+            variant="glass"
+            size={compact ? "icon" : "default"}
+            aria-label={`${label} link unavailable`}
+            title={`${label} URL not provided`}
+            disabled
+          >
+            <Icon />
+            {compact ? null : label}
+          </Button>
+        ),
+      )}
     </div>
   );
 }
@@ -602,7 +613,13 @@ function Portfolio() {
                     <Button variant="premium" size="sm" onClick={() => setSelectedProject(project)}>
                       View details <ArrowRight />
                     </Button>
-                    <Button variant="glass" size="icon" disabled title="GitHub URL not provided" aria-label="GitHub URL not provided"><Github /></Button>
+                    {project.github ? (
+                      <Button variant="glass" size="icon" asChild>
+                        <a href={project.github} target="_blank" rel="noreferrer" title="View on GitHub" aria-label={`${project.name} on GitHub`}><Github /></a>
+                      </Button>
+                    ) : (
+                      <Button variant="glass" size="icon" disabled title="GitHub URL not provided" aria-label="GitHub URL not provided"><Github /></Button>
+                    )}
                     <Button variant="glass" size="icon" disabled title="Live demo URL not provided" aria-label="Live demo URL not provided"><ExternalLink /></Button>
                   </div>
                 </article>
@@ -706,7 +723,13 @@ function Portfolio() {
                 <ul>{selectedProject.features.map((feature) => <li key={feature}><Check />{feature}</li>)}</ul>
               </div>
               <div className="dialog-actions">
-                <Button variant="glass" disabled><Github /> GitHub unavailable</Button>
+                {selectedProject.github ? (
+                  <Button variant="glass" asChild>
+                    <a href={selectedProject.github} target="_blank" rel="noreferrer"><Github /> View on GitHub</a>
+                  </Button>
+                ) : (
+                  <Button variant="glass" disabled><Github /> GitHub unavailable</Button>
+                )}
                 <Button variant="glass" disabled><ExternalLink /> Live demo unavailable</Button>
               </div>
             </>
